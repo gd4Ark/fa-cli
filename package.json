@@ -1,0 +1,45 @@
+{
+    "bin": {
+        "ed": "./bin/ed.js"
+    },
+    "name": "ed-cli",
+    "version": "1.0.0",
+    "description": "A simple CLI for creating your project",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint --ext .js ./",
+        "lint-fix": "eslint --ext .js ./ --fix"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run lint",
+            "pre-push": "npm run lint"
+        }
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "async": "^2.6.0",
+        "chalk": "^2.4.2",
+        "commander": "^2.19.0",
+        "consolidate": "^0.15.0",
+        "metalsmith": "^2.3.0",
+        "handlebars": "^4.0.11",
+        "inquirer": "^6.2.2",
+        "ora": "^3.2.0",
+        "rimraf": "^2.6.2",
+        "read-metadata": "^1.0.0",
+        "validate-npm-package-name": "^3.0.0"
+    },
+    "devDependencies": {
+        "eslint": "^4.18.1",
+        "eslint-config-standard": "^11.0.0",
+        "eslint-plugin-import": "^2.9.0",
+        "eslint-plugin-node": "^6.0.1",
+        "eslint-plugin-promise": "^3.6.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "husky": "^2.7.0"
+    }
+}
