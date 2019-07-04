@@ -31,7 +31,10 @@
         "ora": "^3.2.0",
         "rimraf": "^2.6.2",
         "read-metadata": "^1.0.0",
-        "validate-npm-package-name": "^3.0.0"
+        "validate-npm-package-name": "^3.0.0",
+        "download-git-repo": "^1.0.2",
+        "user-home": "^2.0.0",
+        "request": "^2.83.0"
     },
     "devDependencies": {
         "eslint": "^4.18.1",
