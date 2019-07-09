@@ -14,27 +14,27 @@ program
 
 program
     .command('add [type]')
-    .description('添加，可选[page、components]，默认为 page')
+    .description('添加，可选[page]，默认为 page')
     .alias('a')
     .action((type = 'page') => {
         require('../command/add')(type)
     })
 
-// program
-//     .command("delete")
-//     .description("删除一个页面")
-//     .alias("d")
-//     .action(() => {
-//         require("../command/delete")
-//     })
+program
+    .command('delete [type]')
+    .description('删除，可选[page]，默认为 page')
+    .alias('d')
+    .action((type = 'page') => {
+        require('../command/delete')(type)
+    })
 
-// program
-//     .command("list")
-//     .description("列出所有页面")
-//     .alias("l")
-//     .action(() => {
-//         require("../command/list")
-//     })
+program
+    .command('list [type]')
+    .description('列出，可选[page]，默认为 page')
+    .alias('l')
+    .action((type = 'page') => {
+        require('../command/list')(type)
+    })
 
 program.parse(process.argv)
 

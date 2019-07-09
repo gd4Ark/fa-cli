@@ -1,19 +1,19 @@
 const { prompt } = require('inquirer')
-const exists = require('fs').existsSync
-const rm = require('rimraf').sync
+const { existsSync } = require('fs')
+const rmSync = require('rimraf').sync
+const ora = require('ora')
 const path = require('path')
 const download = require('download-git-repo')
-const ora = require('ora')
-const generate = require('../lib/utils/generate')
 const logger = require('../lib/utils/logger')
-const getGitTplList = require('../lib/utils/git-tpl-list')
+const install = require('../lib/utils/install')
+const getTemplateList = require('../lib/utils/getTemplateList')
 const { template_path } = require('../config')
 
 module.exports = project => {
     const inPlace = project === '.'
     const name = inPlace ? path.relative('../', process.cwd()) : project
     const to = inPlace ? process.cwd() : path.resolve(name)
-    if (inPlace || exists(to)) {
+    if (inPlace || existsSync(to)) {
         prompt([
             {
                 type: 'confirm',
@@ -35,8 +35,8 @@ module.exports = project => {
 }
 
 const run = async(project, to) => {
-    const gitList = await getGitTplList()
-    const choices = Object.keys(gitList)
+    const tplList = await getTemplateList()
+    const choices = Object.keys(tplList)
     const questions = [
         {
             type: 'list',
@@ -46,16 +46,16 @@ const run = async(project, to) => {
         }
     ]
     prompt(questions).then(({ name }) => {
-        const gitPlace = gitList[name]['owner/name']
-        const gitBranch = gitList[name]['branch']
+        const place = tplList[name]['owner/name']
+        const branch = tplList[name]['branch']
         const tmp = path.join(template_path, name)
         const spinner = ora('模板下载中...')
         spinner.start()
-        if (exists(tmp)) rm(tmp)
-        download(`${gitPlace}#${gitBranch}`, tmp, { clone: false }, err => {
+        if (existsSync(tmp)) rmSync(tmp)
+        download(`${place}#${branch}`, tmp, { clone: false }, err => {
             spinner.stop()
             if (err) return logger.fatal(err)
-            generate(project, tmp, to, err => {
+            install(project, tmp, to, err => {
                 if (err) logger.fatal(err)
                 logger.success('创建 %s 项目成功！', project)
             })
