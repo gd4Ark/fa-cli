@@ -3,13 +3,9 @@ const { join } = require('path')
 const { prompt } = require('inquirer')
 const ora = require('ora')
 const upperFirst = require('lodash/upperFirst')
-const {
-    template_path,
-    user_path,
-    template_json_path
-} = require('../../config/')
-const utils = require('../utils')
-const logger = require('../utils/logger')
+const { template_path, user_path, template_json_path } = require('../../config')
+const utils = require('../../lib/utils')
+const logger = require('../../lib/utils/logger')
 
 const templteJson = require(template_json_path)
 const pages = templteJson.pages

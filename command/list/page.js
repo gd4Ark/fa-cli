@@ -1,4 +1,4 @@
-const logger = require('../utils/logger')
+const logger = require('../../lib/utils/logger')
 const { template_json_path } = require('../../config')
 
 const pages = require(template_json_path).pages

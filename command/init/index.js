@@ -4,10 +4,10 @@ const rmSync = require('rimraf').sync
 const ora = require('ora')
 const path = require('path')
 const download = require('download-git-repo')
-const logger = require('../lib/utils/logger')
-const install = require('../lib/utils/install')
-const getTemplateList = require('../lib/utils/getTemplateList')
-const { template_path } = require('../config')
+const logger = require('../../lib/utils/logger')
+const install = require('../../lib/utils/install')
+const getTemplateList = require('../../lib/utils/getTemplateList')
+const { template_path } = require('../../config')
 
 module.exports = project => {
     const inPlace = project === '.'

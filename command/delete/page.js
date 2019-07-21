@@ -2,9 +2,9 @@ const fs = require('fs')
 const { join } = require('path')
 const { prompt } = require('inquirer')
 const ora = require('ora')
-const { user_path, template_json_path } = require('../../config/')
-const utils = require('../utils')
-const logger = require('../utils/logger')
+const { user_path, template_json_path } = require('../../config')
+const utils = require('../../lib/utils')
+const logger = require('../../lib/utils/logger')
 
 const templteJson = require(template_json_path)
 
