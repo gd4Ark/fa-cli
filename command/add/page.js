@@ -19,7 +19,6 @@ const { question, getFileTplList } = require(join(
 module.exports = async() => {
     const answers = await prompt(question)
     const files = getFileTplList(answers, user_path)
-    console.log(answers)
     const spinner = ora('添加页面中...')
     spinner.start()
     await utils.generate(files, answers)

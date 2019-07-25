@@ -3,7 +3,7 @@
         "fa": "./bin/fa.js"
     },
     "name": "fa-cli",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "description": "A simple CLI for creating your project",
     "main": "index.js",
     "scripts": {
