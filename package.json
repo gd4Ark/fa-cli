@@ -1,9 +1,9 @@
 {
     "bin": {
-        "ed": "./bin/ed.js"
+        "fa": "./bin/fa.js"
     },
-    "name": "ed-cli",
-    "version": "1.0.0",
+    "name": "fa-cli",
+    "version": "1.0.1",
     "description": "A simple CLI for creating your project",
     "main": "index.js",
     "scripts": {

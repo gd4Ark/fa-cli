@@ -6,7 +6,7 @@ program.version(require('../package').version).usage('<command> [options]')
 
 program
     .command('init [project-name]')
-    .description('初始化一个项目')
+    .description('Initialize a project')
     .alias('i')
     .action((project = '.') => {
         require('../command/init')(project)
@@ -14,7 +14,7 @@ program
 
 program
     .command('add [type]')
-    .description('添加，可选[page]，默认为 page')
+    .description('Add, optional [page], default is page')
     .alias('a')
     .action((type = 'page') => {
         require('../command/add')(type)
@@ -22,7 +22,7 @@ program
 
 program
     .command('delete [type]')
-    .description('删除，可选[page]，默认为 page')
+    .description('Delete, optional [page], default to page.')
     .alias('d')
     .action((type = 'page') => {
         require('../command/delete')(type)
@@ -30,7 +30,7 @@ program
 
 program
     .command('list [type]')
-    .description('列出，可选[page]，默认为 page')
+    .description('List, optional [page], default is page')
     .alias('l')
     .action((type = 'page') => {
         require('../command/list')(type)
