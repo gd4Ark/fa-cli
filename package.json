@@ -3,7 +3,7 @@
         "fa": "./bin/fa.js"
     },
     "name": "fa-cli",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A simple CLI for creating your project",
     "main": "index.js",
     "scripts": {
@@ -18,23 +18,24 @@
         }
     },
     "keywords": [],
-    "author": "",
+    "author": "gd4ark <gd.4ark@gmail.com>",
     "license": "MIT",
     "dependencies": {
         "async": "^2.6.0",
         "chalk": "^2.4.2",
         "commander": "^2.19.0",
         "consolidate": "^0.15.0",
-        "metalsmith": "^2.3.0",
+        "download-git-repo": "^1.0.2",
         "handlebars": "^4.0.11",
         "inquirer": "^6.2.2",
+        "lodash": "^4.17.15",
+        "metalsmith": "^2.3.0",
         "ora": "^3.2.0",
-        "rimraf": "^2.6.2",
         "read-metadata": "^1.0.0",
-        "validate-npm-package-name": "^3.0.0",
-        "download-git-repo": "^1.0.2",
+        "request": "^2.83.0",
+        "rimraf": "^2.6.2",
         "user-home": "^2.0.0",
-        "request": "^2.83.0"
+        "validate-npm-package-name": "^3.0.0"
     },
     "devDependencies": {
         "eslint": "^4.18.1",
