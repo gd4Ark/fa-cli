@@ -1,6 +1,6 @@
-# fa-cli
+# FA-CLI
 
-> A simple CLI for creating your front-end  project
+> A simple CLI for creating your front-end project
 
 ## Install
 
