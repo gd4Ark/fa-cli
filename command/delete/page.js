@@ -23,7 +23,7 @@ const { question, getFileTplList } = require(join(
   'command/delete/page.js'
 ))
 
-module.exports = async() => {
+module.exports = async () => {
   const answers = await prompt(question)
   const files = getFileTplList(answers, user_path)
   const spinner = ora('Deleting Page ...')

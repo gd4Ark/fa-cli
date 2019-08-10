@@ -35,7 +35,7 @@ module.exports = project => {
   }
 }
 
-const run = async(project, to) => {
+const run = async (project, to) => {
   const tplList = await getTemplateList()
   const choices = Object.keys(tplList)
   const questions = [

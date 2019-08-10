@@ -11,7 +11,7 @@ existOrExit(
 
 const pages = require(user_tpl_json_path).pages
 
-module.exports = async() => {
+module.exports = async () => {
   logger.success('Page List：')
   if (isEmpty(pages)) {
     return console.log('列表为空')
