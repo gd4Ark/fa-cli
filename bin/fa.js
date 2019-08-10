@@ -15,6 +15,14 @@ program
   })
 
 program
+  .command('download')
+  .description('Download project template')
+  .alias('down')
+  .action(() => {
+    require('@/command/download')()
+  })
+
+program
   .command('add [type]')
   .description('Add, optional [page], default is page')
   .alias('a')
