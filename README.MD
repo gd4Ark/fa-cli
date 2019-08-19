@@ -47,6 +47,11 @@ Supporting project template : [fa-web-template](https://github.com/fa-web-templa
 
 > [Blog](https://4ark.me/) · GitHub [@gd4Ark](https://github.com/gd4Ark)
 
+## Credits
+
+- [suixin-cli](https://github.com/Estelle00/suixin-cli)
+- [hendo-cli](https://github.com/qh08/hendo-cli)
+
 ## Conclusion
 
 If you think my project is good👏 . Give a Star⭐ encouragement.
