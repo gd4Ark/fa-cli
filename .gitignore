@@ -1,23 +1,13 @@
-.DS_Store
 node_modules
-
-# local env files
-.env.local
-.env.*.local
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Editor directories and files
-.idea
+coverage
+.nyc_output
+.DS_Store
+*.log
 .vscode
+.idea
+dist
+compiled
+.awcache
+.rpt2_cache
+docs
 .history
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw*
-
-package-lock.json
