@@ -6,7 +6,7 @@ const ora = require('ora')
 
 let templates: templates | null = null
 
-export default async (show: boolean = true) => {
+export default async (show: boolean = true): Promise<templates> => {
   if (templates) return templates
 
   const spinner = ora('getting template...')
@@ -36,7 +36,7 @@ export default async (show: boolean = true) => {
     return tpls
   }
 
-  return new Promise<templates>((resolve, reject) => {
+  return new Promise<templates>((resolve, reject): void => {
     request(headers, (err: any, res: any, body: string): void => {
       spinner.stop()
 

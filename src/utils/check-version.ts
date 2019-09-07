@@ -17,7 +17,7 @@ export default (done: () => void): void => {
       url: cli_tag_url,
       timeout: 1000
     },
-    (err: Error | null, res: any, body: string) => {
+    (err: Error | null, res: any, body: string): void => {
       if (!err && res.statusCode === 200) {
         const data = JSON.parse(body)['dist-tags']
         const version = data.latest

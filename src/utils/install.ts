@@ -8,7 +8,7 @@ const { render } = require('consolidate').handlebars
 const Metalsmith = require('metalsmith')
 const Handlebars = require('handlebars')
 
-Handlebars.registerHelper('if_eq', function(this: any, a: string, b: string, opts: any) {
+Handlebars.registerHelper('if_eq', function(this: any, a: string, b: string, opts: any): void {
   a === b ? opts.fn(this) : opts.inverse(this)
 })
 
@@ -19,7 +19,7 @@ const askQuestions = (prompts: object) => {
 }
 
 const renderTemplateFiles = () => {
-  return (files: any, metalsmith: any, done: any) => {
+  return (files: any, metalsmith: any, done: any): void => {
     const keys = Object.keys(files)
     const data = metalsmith.metadata()
     async.each(
@@ -55,7 +55,7 @@ const renderTemplateFiles = () => {
  * @param {Object} data
  */
 
-function logMessage(message: string, data: obj) {
+function logMessage(message: string, data: obj): void {
   if (!message) return
   render(message, data, (err: any, res: string) => {
     if (err) {
@@ -82,7 +82,7 @@ export default async ({ name, src, dest }: installParameter): Promise<any> => {
 
   metalsmith.use(askQuestions(opts.prompts)).use(renderTemplateFiles())
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject): void => {
     metalsmith
       .clean(false)
       .source('.')

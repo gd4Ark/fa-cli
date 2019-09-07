@@ -19,13 +19,13 @@ export const writeFile = (filePath: string, contents: string, cb: any): void => 
   })
 }
 
-export const getTemplte = (filePath: string) => {
+export const getTemplte = (filePath: string): any => {
   assert(existsSync(filePath), `getTemplate: file ${filePath} not fould`)
   const source = readFileSync(filePath, 'utf-8')
   return Handlebars.compile(source)
 }
 
-export const generate = (files: any[], answers: any) => {
+export const generate = (files: any[], answers: any): Promise<void> => {
   return new Promise((resolve, reject) => {
     const len = files.length
     let count = 0
@@ -42,7 +42,7 @@ export const generate = (files: any[], answers: any) => {
   })
 }
 
-export const deleteFiles = (files: any[]) => {
+export const deleteFiles = (files: any[]): Promise<void> => {
   return new Promise((resolve, reject) => {
     const len = files.length
     let count = 0

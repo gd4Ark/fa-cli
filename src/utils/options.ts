@@ -32,7 +32,7 @@ const getMetadata = (dir: string): installOptions => {
   return opt
 }
 
-const setDefault = (opt: installOptions, key: string, val: string) => {
+const setDefault = (opt: installOptions, key: string, val: string): void => {
   const prompts: obj = opt.prompts || (opt.prompts = {})
   if (!prompts[key] || typeof prompts[key] !== 'object') {
     prompts[key] = {
@@ -44,7 +44,7 @@ const setDefault = (opt: installOptions, key: string, val: string) => {
   }
 }
 
-function setValidateName(opts: installOptions) {
+function setValidateName(opts: installOptions): void {
   const name: obj = opts.prompts.name
   const customValidate = name.validate
   name.validate = (name: string) => {

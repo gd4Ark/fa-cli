@@ -1,6 +1,6 @@
 const exec = require('child_process').execSync
 
-export default () => {
+export default (): string => {
   let name: string
   let email: string
 

@@ -3,7 +3,7 @@ import { obj, arr } from '../types'
 const async = require('async')
 const { prompt } = require('inquirer')
 
-export default (prompts: obj, data: arr, done: any) => {
+export default (prompts: obj, data: arr, done: any): void => {
   async.eachSeries(
     Object.keys(prompts),
     (key: number, next: any) => {
@@ -13,7 +13,7 @@ export default (prompts: obj, data: arr, done: any) => {
   )
 }
 
-const promptFn = (data: arr, key: number, promptData: obj, done: any) => {
+const promptFn = (data: arr, key: number, promptData: obj, done: any): void => {
   promptsFn(key, promptData, (answers: any[]) => {
     const answer = answers[key]
     if (promptData.children && !!answer) {
@@ -33,7 +33,7 @@ const promptFn = (data: arr, key: number, promptData: obj, done: any) => {
   })
 }
 
-const promptsFn = (key: number, promptData: obj, done: any) => {
+const promptsFn = (key: number, promptData: obj, done: any): void => {
   const { type, message, label, choices, validate = () => true } = promptData
   const promptDefault = promptData.default
   prompt([
@@ -50,7 +50,7 @@ const promptsFn = (key: number, promptData: obj, done: any) => {
   })
 }
 
-const childrenAsk = (data: arr, key: number, prompts: arr, done: any) => {
+const childrenAsk = (data: arr, key: number, prompts: arr, done: any): void => {
   let temp = {}
   async.eachSeries(
     Object.keys(prompts),

@@ -18,7 +18,7 @@ export default (): void => {
     return console.log('list is empty')
   }
 
-  pages.forEach((item: object) => {
+  pages.forEach((item: object): void => {
     console.log(`=>`, item)
   })
 }

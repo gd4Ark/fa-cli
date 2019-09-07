@@ -40,7 +40,7 @@ export default async (): Promise<initAnswer> => {
 
   if (existsSync(tpl)) rmSync(tpl)
 
-  return new Promise<initAnswer>((resolve, rejects) => {
+  return new Promise<initAnswer>((resolve, rejects): void => {
     download(`${place}#${branch}`, tpl, { clone: false }, (err: any) => {
       spinner.stop()
       if (err) return logger.fatal(err)

@@ -15,7 +15,7 @@ const sep = chalk.gray('·')
  * @param {String} message
  */
 
-export const log = (...args: any[]) => {
+export const log = (...args: any[]): void => {
   const msg = format.apply(format, args)
   console.log(chalk.white(prefix), sep, msg)
 }
@@ -26,7 +26,7 @@ export const log = (...args: any[]) => {
  * @param {String} message
  */
 
-export const fatal = (...args: any[]) => {
+export const fatal = (...args: any[]): void => {
   if (args[0] instanceof Error) args[0] = args[0].message.trim()
   const msg = format.apply(format, args)
   console.error(chalk.red(prefix), sep, msg)
@@ -39,7 +39,7 @@ export const fatal = (...args: any[]) => {
  * @param {String} message
  */
 
-export const success = (...args: any[]) => {
+export const success = (...args: any[]): void => {
   const msg = format.apply(format, args)
   console.log(chalk.white(prefix), sep, msg)
 }

@@ -3,7 +3,7 @@ import logger from '../../utils/logger'
 import { deleteFiles } from '../../utils'
 import { tpl_path, user_path, user_tpl_json_path } from '../../config'
 
-export default async () => {
+export default async (): Promise<void> => {
   existOrExit(
     user_tpl_json_path,
     'The template.json file could not be found, please make sure to run this command in the project root directory!'
@@ -29,7 +29,7 @@ export default async () => {
 
   await deleteFiles(files)
 
-  template.pages = template.pages.filter((item: any) => {
+  template.pages = template.pages.filter((item: any): any => {
     if (item.name !== answers.name) {
       return item
     }
