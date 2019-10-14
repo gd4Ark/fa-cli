@@ -39,12 +39,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var logger_1 = require("../../utils/logger");
 var download_template_1 = require("../../utils/download-template");
 exports.default = (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var name;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, download_template_1.default()];
             case 1:
-                name = (_a.sent()).name;
+                _a.sent();
                 logger_1.default.success("download successful");
                 return [2 /*return*/];
         }

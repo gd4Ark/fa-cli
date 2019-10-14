@@ -3,7 +3,7 @@
     "fa": "./dist/index.umd.js"
   },
   "name": "fa-cli",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A simple CLI for creating your front-end project",
   "keywords": [],
   "main": "dist/index.umd.js",

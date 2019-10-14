@@ -554,20 +554,24 @@
       });
   });
 
-  var actions = ['page'];
+  var actions = {
+      page: page
+  };
   var list = (function (type) {
-      if (!actions.includes(type))
-          return console.log("type not found\uFF1A" + type);
-      page();
+      if (actions[type]) {
+          page();
+      }
+      else {
+          logger.fatal("type not found\uFF1A" + type);
+      }
   });
 
   var download$1 = (function () { return __awaiter(void 0, void 0, void 0, function () {
-      var name;
       return __generator(this, function (_a) {
           switch (_a.label) {
               case 0: return [4 /*yield*/, downloadTemplate()];
               case 1:
-                  name = (_a.sent()).name;
+                  _a.sent();
                   logger.success("download successful");
                   return [2 /*return*/];
           }
@@ -666,11 +670,16 @@
       });
   }); });
 
-  var actions$1 = ['page'];
+  var actions$1 = {
+      page: page$1
+  };
   var add = (function (type) {
-      if (!actions$1.includes(type))
-          return console.log("type not found\uFF1A" + type);
-      page$1();
+      if (actions$1[type]) {
+          page$1();
+      }
+      else {
+          logger.fatal("type not found\uFF1A" + type);
+      }
   });
 
   var page$2 = (function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -713,11 +722,16 @@
       });
   }); });
 
-  var actions$2 = ['page'];
+  var actions$2 = {
+      page: page$2
+  };
   var remove = (function (type) {
-      if (!actions$2.includes(type))
-          return console.log("type not found\uFF1A" + type);
-      page$2();
+      if (actions$2[type]) {
+          page$2();
+      }
+      else {
+          logger.fatal("type not found\uFF1A" + type);
+      }
   });
 
   var command = {
