@@ -1,4 +1,3 @@
-require('module-alias/register')
 import { obj, initAnswer } from '../../types'
 import downloadTemplate from '../../utils/download-template'
 import install from '../../utils/install'

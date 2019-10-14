@@ -3,7 +3,7 @@
     "fa": "./dist/index.umd.js"
   },
   "name": "fa-cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A simple CLI for creating your front-end project",
   "keywords": [],
   "main": "dist/index.umd.js",
@@ -20,10 +20,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=6.0.0"
-  },
-  "_moduleAliases": {
-    "~": ".",
-    "@": "./src"
   },
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
@@ -113,7 +109,6 @@
     "lint-staged": "^8.0.0",
     "lodash.camelcase": "^4.3.0",
     "metalsmith": "^2.3.0",
-    "module-alias": "^2.2.1",
     "ora": "^3.2.0",
     "prettier": "^1.14.3",
     "prompt": "^1.0.0",

@@ -1,4 +1,3 @@
-require('module-alias/register')
 const chalk = require('chalk')
 const format = require('util').format
 
@@ -6,7 +5,7 @@ const format = require('util').format
  * Prefix.
  */
 
-const prefix = `  ${require('~/package.json').name}`
+const prefix = `  ${require('..//package.json').name}`
 const sep = chalk.gray('·')
 
 /**

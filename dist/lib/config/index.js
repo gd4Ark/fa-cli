@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-require('module-alias/register');
 var path = require('path');
 var home = require('user-home');
-var pgk = require('~/package.json');
+var pgk = require('../package.json');
 var org_name = 'fa-web-template';
 exports.pro_name = pgk.name;
 exports.root_path = path.join(__dirname, '../');

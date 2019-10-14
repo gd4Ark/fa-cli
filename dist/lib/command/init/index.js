@@ -36,7 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-require('module-alias/register');
 var download_template_1 = require("../../utils/download-template");
 var install_1 = require("../../utils/install");
 var logger_1 = require("../../utils/logger");

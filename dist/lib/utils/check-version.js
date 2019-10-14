@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-require('module-alias/register');
 var index_1 = require("../config/index");
 var request = require('request');
 var semver = require('semver');
 var chalk = require('chalk');
-var packageConfig = require('~/package.json');
+var packageConfig = require('../package.json');
 exports.default = (function (done) {
     // Ensure minimum supported node version is used
     if (!semver.satisfies(process.version, packageConfig.engines.node)) {

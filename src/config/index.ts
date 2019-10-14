@@ -1,7 +1,6 @@
-require('module-alias/register')
 const path = require('path')
 const home = require('user-home')
-const pgk = require('~/package.json')
+const pgk = require('../package.json')
 const org_name = 'fa-web-template'
 
 export const pro_name: string = pgk.name

@@ -9,7 +9,7 @@ export default (): void => {
     .command('init [project-name]')
     .description('Initialize a project')
     .alias('i')
-    .action((project: string = '.') => {
+    .action((project: string = '.'): void => {
       command.init(project)
     })
 
@@ -17,7 +17,7 @@ export default (): void => {
     .command('download')
     .description('Download project template')
     .alias('load')
-    .action(() => {
+    .action((): void => {
       command.download()
     })
 
@@ -25,7 +25,7 @@ export default (): void => {
     .command('add [type]')
     .description('Add, optional [page], default is page')
     .alias('a')
-    .action((type: string = 'page') => {
+    .action((type: string = 'page'): void => {
       command.add(type)
     })
 
@@ -33,7 +33,7 @@ export default (): void => {
     .command('delete [type]')
     .description('Delete, optional [page], default to page.')
     .alias('d')
-    .action((type: string = 'page') => {
+    .action((type: string = 'page'): void => {
       command.delete(type)
     })
 
@@ -41,7 +41,7 @@ export default (): void => {
     .command('list [type]')
     .description('List, optional [page], default is page')
     .alias('l')
-    .action((type: string = 'page') => {
+    .action((type: string = 'page'): void => {
       command.list(type)
     })
 

@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-require('module-alias/register');
 var chalk = require('chalk');
 var format = require('util').format;
 /**
  * Prefix.
  */
-var prefix = "  " + require('~/package.json').name;
+var prefix = "  " + require('..//package.json').name;
 var sep = chalk.gray('·');
 /**
  * Log a `message` to the console.

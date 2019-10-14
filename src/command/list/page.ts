@@ -1,7 +1,6 @@
 import { existOrExit } from '../../utils/system'
 import logger from '../../utils/logger'
 import { user_tpl_json_path } from '../../config'
-require('module-alias/register')
 const { isEmpty } = require('lodash')
 
 export default (): void => {

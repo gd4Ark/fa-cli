@@ -1,7 +1,6 @@
-require('module-alias/register');
 var path = require('path');
 var home = require('user-home');
-var pgk = require('~/package.json');
+var pgk = require('../package.json');
 var org_name = 'fa-web-template';
 var pro_name = pgk.name;
 var root_path = path.join(__dirname, '../');
@@ -12,11 +11,10 @@ var git_tpl_list_url = "https://api.github.com/orgs/" + org_name + "/repos";
 var git_repo_default_branch = 'master';
 var cli_tag_url = 'https://registry.npm.taobao.org/fa-cli';
 
-require('module-alias/register');
 var request = require('request');
 var semver = require('semver');
 var chalk = require('chalk');
-var packageConfig = require('~/package.json');
+var packageConfig = require('../package.json');
 var checkVersion = (function (done) {
     // Ensure minimum supported node version is used
     if (!semver.satisfies(process.version, packageConfig.engines.node)) {
@@ -137,13 +135,12 @@ var getTemplateList = (function (show) {
     });
 });
 
-require('module-alias/register');
 var chalk$1 = require('chalk');
 var format = require('util').format;
 /**
  * Prefix.
  */
-var prefix = "  " + require('~/package.json').name;
+var prefix = "  " + require('..//package.json').name;
 var sep = chalk$1.gray('·');
 /**
  * Log a `message` to the console.
@@ -484,7 +481,6 @@ var install = (function (_a) {
     });
 });
 
-require('module-alias/register');
 var path$2 = require('path');
 var prompt$1 = require('inquirer').prompt;
 var existsSync$1 = require('fs').existsSync;
@@ -538,7 +534,6 @@ var existOrExit = function (path, message) {
     }
 };
 
-require('module-alias/register');
 var isEmpty = require('lodash').isEmpty;
 var page = (function () {
     existOrExit(user_tpl_json_path, 'The template.json file could not be found, please make sure to run this command in the project root directory!');

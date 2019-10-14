@@ -1,9 +1,8 @@
-require('module-alias/register')
 import { cli_tag_url, pro_name } from '../config/index'
 const request = require('request')
 const semver = require('semver')
 const chalk = require('chalk')
-const packageConfig = require('~/package.json')
+const packageConfig = require('../package.json')
 
 export default (done: () => void): void => {
   // Ensure minimum supported node version is used
