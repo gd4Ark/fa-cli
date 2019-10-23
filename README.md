@@ -33,7 +33,7 @@ Options:
 
 Commands:
   init|i [project-name]  Initialize a project
-  download|down          Download project template
+  download|load          Download project template
   add|a [type]           Add, optional [page], default is page
   delete|d [type]        Delete, optional [page], default to page.
   list|l [type]          List, optional [page], default is page
