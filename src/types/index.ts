@@ -1,46 +1,46 @@
-export type obj = Record<string, any>
+export type Obj = Record<string, any>
 
-export type arr = Record<number, any>
+export type Arr = Record<number, any>
 
-export interface initAnswer {
+export interface InitAnswer {
   name: string
   tpl: string
 }
 
-export interface downloadQuestion {
+export interface DownloadQuestion {
   type: string
   name: string
   message: string
   [PropName: string]: any
 }
 
-export interface downloadAnswer {
+export interface DownloadAnswer {
   name: string
   branch: string
 }
 
-export interface repositorie {
+export interface Repositorie {
   name: string
   html_url: string
   default_branch: string
 }
 
-export interface template {
+export interface Template {
   'owner/name': string
   branch: string
 }
 
-export interface templates {
-  [propName: string]: template
+export interface Templates {
+  [propName: string]: Template
 }
 
-export interface installParameter {
+export interface InstallParameter {
   name: string
   src: string
   dest: string
 }
 
-export interface installOptions {
-  prompts: obj
+export interface InstallOptions {
+  prompts: Obj
   [propName: string]: any
 }

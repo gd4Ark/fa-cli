@@ -1,4 +1,3 @@
-import { initAnswer } from '../../types'
 import logger from '../../utils/logger'
 import downloadTemplate from '../../utils/download-template'
 

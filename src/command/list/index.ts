@@ -1,8 +1,8 @@
-import { obj } from '../../types'
+import { Obj } from '../../types'
 import logger from '../../utils/logger'
 import page from './page'
 
-const actions: obj = {
+const actions: Obj = {
   page
 }
 

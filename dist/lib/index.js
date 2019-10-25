@@ -17,7 +17,7 @@ exports.default = (function () {
         .description('Download project template')
         .alias('load')
         .action(function () {
-        index_1.default.download();
+        index_1.default.download().catch(console.error);
     });
     program
         .command('add [type]')

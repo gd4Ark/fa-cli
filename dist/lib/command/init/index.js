@@ -60,11 +60,11 @@ exports.default = (function (project) {
             .then(function (_a) {
             var ok = _a.ok;
             if (ok)
-                run(name, to);
+                run(name, to).catch(console.error);
         })
             .catch(logger_1.default.fatal);
     };
-    needConfrim ? confirm() : run(name, to);
+    needConfrim ? confirm() : run(name, to).catch(console.error);
 });
 var run = function (project, to) { return __awaiter(void 0, void 0, void 0, function () {
     var tpl;

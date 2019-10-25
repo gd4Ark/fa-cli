@@ -10,7 +10,7 @@ exports.default = (function (prompts, data, done) {
 var promptFn = function (data, key, promptData, done) {
     promptsFn(key, promptData, function (answers) {
         var answer = answers[key];
-        if (promptData.children && !!answer) {
+        if (promptData.children && answer) {
             data[key] = [];
             childrenAsk(data, key, promptData.children, done);
         }

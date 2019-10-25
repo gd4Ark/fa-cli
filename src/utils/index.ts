@@ -1,4 +1,4 @@
-import { initAnswer } from '../types'
+import { InitAnswer } from '../types'
 import logger from './logger'
 const assert = require('assert')
 const mkdirp = require('mkdirp')

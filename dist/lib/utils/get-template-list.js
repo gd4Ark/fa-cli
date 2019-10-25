@@ -53,9 +53,9 @@ exports.default = (function (show) {
             }
             headers = {
                 headers: {
-                    'User-Agent': config_1.pro_name
+                    'User-Agent': config_1.PRO_NAME
                 },
-                url: config_1.git_tpl_list_url
+                url: config_1.GIT_TPL_LIST_URL
             };
             handler = function (data) {
                 var tpls = {};

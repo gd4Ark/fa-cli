@@ -1,12 +1,12 @@
 import { existOrExit } from '../../utils/system'
 import logger from '../../utils/logger'
 import { generate } from '../../utils'
-import { tpl_path, user_path, user_tpl_json_path } from '../../config'
-import { obj } from '../../types'
+import { TPL_PATH, USER_PATH, USER_TPL_JSON_PATH } from '../../config'
+import { Obj } from '../../types'
 
 export default async () => {
   existOrExit(
-    user_tpl_json_path,
+    USER_TPL_JSON_PATH,
     'The template.json file could not be found, please make sure to run this command in the project root directory!'
   )
 
@@ -14,20 +14,20 @@ export default async () => {
   const { writeFile } = require('fs')
   const { join } = require('path')
   const { prompt } = require('inquirer')
-  const templte: obj = require(user_tpl_json_path)
-  const template_name: string = templte.name
-  const generator_path: string = join(tpl_path, `${template_name}/generator`)
-  const { getQuestions, getTemplates } = require(join(generator_path, 'command/add/page.js'))
-  const questions = getQuestions(user_path)
+  const templte: Obj = require(USER_TPL_JSON_PATH)
+  const templateName: string = templte.name
+  const generatorPath: string = join(TPL_PATH, `${templateName}/generator`)
+  const { getQuestions, getTemplates } = require(join(generatorPath, 'command/add/page.js'))
+  const questions = getQuestions(USER_PATH)
   const answers = await prompt(questions)
-  const files = getTemplates(answers, user_path)
+  const files = getTemplates(answers, USER_PATH)
 
   const spinner = ora('creating page...')
   spinner.start()
   await generate(files, answers)
   templte.pages.push(answers)
 
-  writeFile(user_tpl_json_path, JSON.stringify(templte), (err: any): void => {
+  writeFile(USER_TPL_JSON_PATH, JSON.stringify(templte), (err: any): void => {
     if (err) logger.fatal('failed to create page：', err)
     spinner.stop()
     logger.success(`create page ${answers.name} successfully`)

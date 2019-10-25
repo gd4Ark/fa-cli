@@ -1,12 +1,12 @@
-import { obj, installOptions } from '../types'
+import { Obj, InstallOptions } from '../types'
 import getGitUser from './get-git-user'
 const { join, resolve } = require('path')
 const { existsSync: exist } = require('fs')
 const metadata = require('read-metadata')
 const validateName = require('validate-npm-package-name')
 
-export default (name: string, dir: string): installOptions => {
-  const opt: installOptions = getMetadata(dir)
+export default (name: string, dir: string): InstallOptions => {
+  const opt: InstallOptions = getMetadata(dir)
   setDefault(opt, 'name', name)
   setValidateName(opt)
   const author = getGitUser()
@@ -16,10 +16,10 @@ export default (name: string, dir: string): installOptions => {
   return opt
 }
 
-const getMetadata = (dir: string): installOptions => {
+const getMetadata = (dir: string): InstallOptions => {
   const json: string = join(dir, 'meta.json')
   const js: string = join(dir, 'meta.js')
-  let opt = {} as installOptions
+  let opt = {} as InstallOptions
   if (exist(json)) {
     opt = metadata.sync(json)
   } else if (exist(js)) {
@@ -32,8 +32,8 @@ const getMetadata = (dir: string): installOptions => {
   return opt
 }
 
-const setDefault = (opt: installOptions, key: string, val: string): void => {
-  const prompts: obj = opt.prompts || (opt.prompts = {})
+const setDefault = (opt: InstallOptions, key: string, val: string): void => {
+  const prompts: Obj = opt.prompts || (opt.prompts = {})
   if (!prompts[key] || typeof prompts[key] !== 'object') {
     prompts[key] = {
       type: 'string',
@@ -44,8 +44,8 @@ const setDefault = (opt: installOptions, key: string, val: string): void => {
   }
 }
 
-function setValidateName(opts: installOptions): void {
-  const name: obj = opts.prompts.name
+function setValidateName(opts: InstallOptions): void {
+  const name: Obj = opts.prompts.name
   const customValidate = name.validate
   name.validate = (name: string) => {
     const its = validateName(name)

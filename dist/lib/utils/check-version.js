@@ -11,7 +11,7 @@ exports.default = (function (done) {
         return console.log(chalk.red("  You must upgrade node to >=" + packageConfig.engines.node + ".x to use vue-cli"));
     }
     request({
-        url: index_1.cli_tag_url,
+        url: index_1.CLI_TAG_URL,
         timeout: 1000
     }, function (err, res, body) {
         if (!err && res.statusCode === 200) {
@@ -19,7 +19,7 @@ exports.default = (function (done) {
             var version = data.latest;
             var localVersion = packageConfig.version;
             if (semver.lt(localVersion, version)) {
-                console.log(chalk.yellow(" " + index_1.pro_name + " release new version!"));
+                console.log(chalk.yellow(" " + index_1.PRO_NAME + " release new version!"));
                 console.log('  latest:    ' + chalk.green(version));
                 console.log('  installed: ' + chalk.red(localVersion));
             }

@@ -41,31 +41,31 @@ var logger_1 = require("../../utils/logger");
 var utils_1 = require("../../utils");
 var config_1 = require("../../config");
 exports.default = (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var ora, writeFile, join, prompt, templte, template_name, generator_path, _a, getQuestions, getTemplates, questions, answers, files, spinner;
+    var ora, writeFile, join, prompt, templte, templateName, generatorPath, _a, getQuestions, getTemplates, questions, answers, files, spinner;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                system_1.existOrExit(config_1.user_tpl_json_path, 'The template.json file could not be found, please make sure to run this command in the project root directory!');
+                system_1.existOrExit(config_1.USER_TPL_JSON_PATH, 'The template.json file could not be found, please make sure to run this command in the project root directory!');
                 ora = require('ora');
                 writeFile = require('fs').writeFile;
                 join = require('path').join;
                 prompt = require('inquirer').prompt;
-                templte = require(config_1.user_tpl_json_path);
-                template_name = templte.name;
-                generator_path = join(config_1.tpl_path, template_name + "/generator");
-                _a = require(join(generator_path, 'command/add/page.js')), getQuestions = _a.getQuestions, getTemplates = _a.getTemplates;
-                questions = getQuestions(config_1.user_path);
+                templte = require(config_1.USER_TPL_JSON_PATH);
+                templateName = templte.name;
+                generatorPath = join(config_1.TPL_PATH, templateName + "/generator");
+                _a = require(join(generatorPath, 'command/add/page.js')), getQuestions = _a.getQuestions, getTemplates = _a.getTemplates;
+                questions = getQuestions(config_1.USER_PATH);
                 return [4 /*yield*/, prompt(questions)];
             case 1:
                 answers = _b.sent();
-                files = getTemplates(answers, config_1.user_path);
+                files = getTemplates(answers, config_1.USER_PATH);
                 spinner = ora('creating page...');
                 spinner.start();
                 return [4 /*yield*/, utils_1.generate(files, answers)];
             case 2:
                 _b.sent();
                 templte.pages.push(answers);
-                writeFile(config_1.user_tpl_json_path, JSON.stringify(templte), function (err) {
+                writeFile(config_1.USER_TPL_JSON_PATH, JSON.stringify(templte), function (err) {
                     if (err)
                         logger_1.default.fatal('failed to create page：', err);
                     spinner.stop();

@@ -57,7 +57,7 @@ var getQuestions = function (choices) {
             type: 'input',
             name: 'branch',
             message: 'use branch',
-            default: config_1.git_repo_default_branch
+            default: config_1.GIT_REPO_DEFAULT_BRANCH
         }
     ];
 };
@@ -74,7 +74,7 @@ exports.default = (function () { return __awaiter(void 0, void 0, void 0, functi
             case 2:
                 _a = _b.sent(), name = _a.name, branch = _a.branch;
                 place = tpls[name]['owner/name'];
-                tpl = path.join(config_1.tpl_path, name);
+                tpl = path.join(config_1.TPL_PATH, name);
                 res = { name: name, tpl: tpl };
                 spinner = ora('download...');
                 spinner.start();

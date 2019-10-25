@@ -1,5 +1,9 @@
 # FA-CLI
 
+[![npm](https://img.shields.io/npm/v/fa-cli)](https://www.npmjs.com/package/fa-cli)
+[![npm](https://img.shields.io/npm/dm/fa-cli)](https://www.npmjs.com/package/fa-cli)
+[![NPM](https://img.shields.io/npm/l/fa-cli)](https://github.com/gd4Ark/fa-cli/blob/master/LICENSE)
+
 > A simple CLI for creating your front-end project
 
 ## Install

@@ -7,7 +7,7 @@ var actions = {
 };
 exports.default = (function (type) {
     if (actions[type]) {
-        page_1.default();
+        page_1.default().catch(console.error);
     }
     else {
         logger_1.default.fatal("type not found\uFF1A" + type);

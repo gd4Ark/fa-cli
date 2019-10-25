@@ -1,15 +1,15 @@
 import { existOrExit } from '../../utils/system'
 import logger from '../../utils/logger'
-import { user_tpl_json_path } from '../../config'
+import { USER_TPL_JSON_PATH } from '../../config'
 const { isEmpty } = require('lodash')
 
 export default (): void => {
   existOrExit(
-    user_tpl_json_path,
+    USER_TPL_JSON_PATH,
     'The template.json file could not be found, please make sure to run this command in the project root directory!'
   )
 
-  const pages = require(user_tpl_json_path).pages
+  const pages = require(USER_TPL_JSON_PATH).pages
 
   logger.success('Page List：')
 

@@ -18,7 +18,7 @@ export default (): void => {
     .description('Download project template')
     .alias('load')
     .action((): void => {
-      command.download()
+      command.download().catch(console.error)
     })
 
   program

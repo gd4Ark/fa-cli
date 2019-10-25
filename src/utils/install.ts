@@ -1,4 +1,4 @@
-import { installParameter, installOptions, obj } from '../types/'
+import { InstallParameter, InstallOptions, Obj } from '../types/'
 import getOptions from './options'
 import ask from './ask'
 const { join } = require('path')
@@ -55,7 +55,7 @@ const renderTemplateFiles = () => {
  * @param {Object} data
  */
 
-function logMessage(message: string, data: obj): void {
+function logMessage(message: string, data: Obj): void {
   if (!message) return
   render(message, data, (err: any, res: string) => {
     if (err) {
@@ -72,8 +72,8 @@ function logMessage(message: string, data: obj): void {
   })
 }
 
-export default async ({ name, src, dest }: installParameter): Promise<any> => {
-  const opts: installOptions = getOptions(name, src)
+export default async ({ name, src, dest }: InstallParameter): Promise<any> => {
+  const opts: InstallOptions = getOptions(name, src)
   const metalsmith = Metalsmith(join(src, 'template'))
   const data = Object.assign(metalsmith.metadata(), {
     destDirName: name,

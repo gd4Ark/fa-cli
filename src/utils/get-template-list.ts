@@ -1,12 +1,12 @@
-import { repositorie, templates } from '../types'
-import { git_tpl_list_url, pro_name } from '../config'
+import { Repositorie, Templates } from '../types'
+import { GIT_TPL_LIST_URL, PRO_NAME } from '../config'
 
 const request = require('request')
 const ora = require('ora')
 
-let templates: templates | null = null
+let templates: Templates | null = null
 
-export default async (show: boolean = true): Promise<templates> => {
+export default async (show: boolean = true): Promise<Templates> => {
   if (templates) return templates
 
   const spinner = ora('getting template...')
@@ -17,15 +17,15 @@ export default async (show: boolean = true): Promise<templates> => {
 
   const headers = {
     headers: {
-      'User-Agent': pro_name
+      'User-Agent': PRO_NAME
     },
-    url: git_tpl_list_url
+    url: GIT_TPL_LIST_URL
   }
 
-  const handler = (data: repositorie[]): templates => {
-    const tpls: templates = {}
+  const handler = (data: Repositorie[]): Templates => {
+    const tpls: Templates = {}
 
-    data.forEach((item: repositorie) => {
+    data.forEach((item: Repositorie) => {
       const { name, html_url, default_branch } = item
       tpls[name] = {
         'owner/name': html_url.replace('https://github.com/', ''),
@@ -36,7 +36,7 @@ export default async (show: boolean = true): Promise<templates> => {
     return tpls
   }
 
-  return new Promise<templates>((resolve, reject): void => {
+  return new Promise<Templates>((resolve, reject): void => {
     request(headers, (err: any, res: any, body: string): void => {
       spinner.stop()
 

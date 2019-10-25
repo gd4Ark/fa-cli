@@ -1,20 +1,20 @@
 const path = require('path')
 const home = require('user-home')
 const pgk = require('../package.json')
-const org_name = 'fa-web-template'
+const ORG_NAME = 'fa-web-template'
 
-export const pro_name: string = pgk.name
+export const PRO_NAME: string = pgk.name
 
-export const root_path: string = path.join(__dirname, '../')
+export const ROOT_PATH: string = path.join(__dirname, '../')
 
-export const tpl_path: string = path.join(home, `.${org_name}`)
+export const TPL_PATH: string = path.join(home, `.${ORG_NAME}`)
 
-export const user_path: string = process.cwd()
+export const USER_PATH: string = process.cwd()
 
-export const user_tpl_json_path: string = `${process.cwd()}/template.json`
+export const USER_TPL_JSON_PATH: string = `${process.cwd()}/template.json`
 
-export const git_tpl_list_url: string = `https://api.github.com/orgs/${org_name}/repos`
+export const GIT_TPL_LIST_URL: string = `https://api.github.com/orgs/${ORG_NAME}/repos`
 
-export const git_repo_default_branch: string = 'master'
+export const GIT_REPO_DEFAULT_BRANCH: string = 'master'
 
-export const cli_tag_url: string = 'https://registry.npm.taobao.org/fa-cli'
+export const CLI_TAG_URL: string = 'https://registry.npm.taobao.org/fa-cli'

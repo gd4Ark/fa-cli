@@ -1,9 +1,9 @@
-import { obj, arr } from '../types'
+import { Obj, Arr } from '../types'
 
 const async = require('async')
 const { prompt } = require('inquirer')
 
-export default (prompts: obj, data: arr, done: any): void => {
+export default (prompts: Obj, data: Arr, done: any): void => {
   async.eachSeries(
     Object.keys(prompts),
     (key: number, next: any) => {
@@ -13,10 +13,10 @@ export default (prompts: obj, data: arr, done: any): void => {
   )
 }
 
-const promptFn = (data: arr, key: number, promptData: obj, done: any): void => {
+const promptFn = (data: Arr, key: number, promptData: Obj, done: any): void => {
   promptsFn(key, promptData, (answers: any[]) => {
     const answer = answers[key]
-    if (promptData.children && !!answer) {
+    if (promptData.children && answer) {
       data[key] = []
       childrenAsk(data, key, promptData.children, done)
     } else {
@@ -33,7 +33,7 @@ const promptFn = (data: arr, key: number, promptData: obj, done: any): void => {
   })
 }
 
-const promptsFn = (key: number, promptData: obj, done: any): void => {
+const promptsFn = (key: number, promptData: Obj, done: any): void => {
   const { type, message, label, choices, validate = () => true } = promptData
   const promptDefault = promptData.default
   prompt([
@@ -50,12 +50,12 @@ const promptsFn = (key: number, promptData: obj, done: any): void => {
   })
 }
 
-const childrenAsk = (data: arr, key: number, prompts: arr, done: any): void => {
+const childrenAsk = (data: Arr, key: number, prompts: Arr, done: any): void => {
   let temp = {}
   async.eachSeries(
     Object.keys(prompts),
     (key: number, next: any) => {
-      promptsFn(key, prompts[key], (answers: arr) => {
+      promptsFn(key, prompts[key], (answers: Arr) => {
         temp = Object.assign(temp, answers)
         next()
       })

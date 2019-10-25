@@ -41,23 +41,23 @@ var logger_1 = require("../../utils/logger");
 var utils_1 = require("../../utils");
 var config_1 = require("../../config");
 exports.default = (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var fs, join, prompt, ora, template, template_name, generator_path, _a, questions, getTemplates, answers, files, spinner;
+    var fs, join, prompt, ora, template, templateName, generatorPath, _a, questions, getTemplates, answers, files, spinner;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                system_1.existOrExit(config_1.user_tpl_json_path, 'The template.json file could not be found, please make sure to run this command in the project root directory!');
+                system_1.existOrExit(config_1.USER_TPL_JSON_PATH, 'The template.json file could not be found, please make sure to run this command in the project root directory!');
                 fs = require('fs');
                 join = require('path').join;
                 prompt = require('inquirer').prompt;
                 ora = require('ora');
-                template = require(config_1.user_tpl_json_path);
-                template_name = template.name;
-                generator_path = join(config_1.tpl_path, template_name + "/generator");
-                _a = require(join(generator_path, 'command/delete/page.js')), questions = _a.questions, getTemplates = _a.getTemplates;
+                template = require(config_1.USER_TPL_JSON_PATH);
+                templateName = template.name;
+                generatorPath = join(config_1.TPL_PATH, templateName + "/generator");
+                _a = require(join(generatorPath, 'command/delete/page.js')), questions = _a.questions, getTemplates = _a.getTemplates;
                 return [4 /*yield*/, prompt(questions)];
             case 1:
                 answers = _b.sent();
-                files = getTemplates(answers, config_1.user_path);
+                files = getTemplates(answers, config_1.USER_PATH);
                 spinner = ora('deleting Page ...');
                 spinner.start();
                 return [4 /*yield*/, utils_1.deleteFiles(files)];
@@ -69,7 +69,7 @@ exports.default = (function () { return __awaiter(void 0, void 0, void 0, functi
                     }
                     return null;
                 });
-                fs.writeFile(config_1.user_tpl_json_path, JSON.stringify(template), function (err) {
+                fs.writeFile(config_1.USER_TPL_JSON_PATH, JSON.stringify(template), function (err) {
                     if (err)
                         logger_1.default.fatal('delete fail', err);
                     spinner.stop();

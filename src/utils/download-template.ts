@@ -1,5 +1,5 @@
-import { initAnswer, downloadQuestion, downloadAnswer, templates } from '../types/index'
-import { tpl_path, git_repo_default_branch } from '../config'
+import { InitAnswer, DownloadQuestion, DownloadAnswer, Templates } from '../types/index'
+import { TPL_PATH, GIT_REPO_DEFAULT_BRANCH } from '../config'
 import getTemplateList from './get-template-list'
 import logger from './logger'
 const ora = require('ora')
@@ -9,7 +9,7 @@ const inquirer = require('inquirer')
 const rmSync = require('rimraf').sync
 const { existsSync } = require('fs')
 
-const getQuestions = (choices: string[]): downloadQuestion[] => {
+const getQuestions = (choices: string[]): DownloadQuestion[] => {
   return [
     {
       type: 'list',
@@ -21,26 +21,26 @@ const getQuestions = (choices: string[]): downloadQuestion[] => {
       type: 'input',
       name: 'branch',
       message: 'use branch',
-      default: git_repo_default_branch
+      default: GIT_REPO_DEFAULT_BRANCH
     }
   ]
 }
 
-export default async (): Promise<initAnswer> => {
-  const tpls: templates = await getTemplateList()
+export default async (): Promise<InitAnswer> => {
+  const tpls: Templates = await getTemplateList()
   const choices = Object.keys(tpls)
   const questions = getQuestions(choices)
-  const { name, branch }: downloadAnswer = await inquirer.prompt(questions)
+  const { name, branch }: DownloadAnswer = await inquirer.prompt(questions)
   const place: string = tpls[name]['owner/name']
-  const tpl: string = path.join(tpl_path, name)
-  const res: initAnswer = { name, tpl }
+  const tpl: string = path.join(TPL_PATH, name)
+  const res: InitAnswer = { name, tpl }
   const spinner = ora('download...')
 
   spinner.start()
 
   if (existsSync(tpl)) rmSync(tpl)
 
-  return new Promise<initAnswer>((resolve, rejects): void => {
+  return new Promise<InitAnswer>((resolve, rejects): void => {
     download(`${place}#${branch}`, tpl, { clone: false }, (err: any) => {
       spinner.stop()
       if (err) return logger.fatal(err)

@@ -1,4 +1,4 @@
-import { cli_tag_url, pro_name } from '../config/index'
+import { CLI_TAG_URL, PRO_NAME } from '../config/index'
 const request = require('request')
 const semver = require('semver')
 const chalk = require('chalk')
@@ -13,7 +13,7 @@ export default (done: () => void): void => {
   }
   request(
     {
-      url: cli_tag_url,
+      url: CLI_TAG_URL,
       timeout: 1000
     },
     (err: Error | null, res: any, body: string): void => {
@@ -22,7 +22,7 @@ export default (done: () => void): void => {
         const version = data.latest
         const localVersion = packageConfig.version
         if (semver.lt(localVersion, version)) {
-          console.log(chalk.yellow(` ${pro_name} release new version!`))
+          console.log(chalk.yellow(` ${PRO_NAME} release new version!`))
           console.log('  latest:    ' + chalk.green(version))
           console.log('  installed: ' + chalk.red(localVersion))
         }

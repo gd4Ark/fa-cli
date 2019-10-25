@@ -1,11 +1,11 @@
 import { existOrExit } from '../../utils/system'
 import logger from '../../utils/logger'
 import { deleteFiles } from '../../utils'
-import { tpl_path, user_path, user_tpl_json_path } from '../../config'
+import { TPL_PATH, USER_PATH, USER_TPL_JSON_PATH } from '../../config'
 
 export default async (): Promise<void> => {
   existOrExit(
-    user_tpl_json_path,
+    USER_TPL_JSON_PATH,
     'The template.json file could not be found, please make sure to run this command in the project root directory!'
   )
 
@@ -14,15 +14,15 @@ export default async (): Promise<void> => {
   const { prompt } = require('inquirer')
   const ora = require('ora')
 
-  const template = require(user_tpl_json_path)
-  const template_name = template.name
+  const template = require(USER_TPL_JSON_PATH)
+  const templateName = template.name
 
-  const generator_path = join(tpl_path, `${template_name}/generator`)
+  const generatorPath = join(TPL_PATH, `${templateName}/generator`)
 
-  const { questions, getTemplates } = require(join(generator_path, 'command/delete/page.js'))
+  const { questions, getTemplates } = require(join(generatorPath, 'command/delete/page.js'))
 
   const answers = await prompt(questions)
-  const files = getTemplates(answers, user_path)
+  const files = getTemplates(answers, USER_PATH)
   const spinner = ora('deleting Page ...')
 
   spinner.start()
@@ -36,7 +36,7 @@ export default async (): Promise<void> => {
     return null
   })
 
-  fs.writeFile(user_tpl_json_path, JSON.stringify(template), (err: any): void => {
+  fs.writeFile(USER_TPL_JSON_PATH, JSON.stringify(template), (err: any): void => {
     if (err) logger.fatal('delete fail', err)
     spinner.stop()
     logger.success(`delete page ${answers.name} successfully`)

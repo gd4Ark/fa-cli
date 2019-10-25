@@ -1,4 +1,4 @@
-import { obj, initAnswer } from '../../types'
+import { Obj, InitAnswer } from '../../types'
 import downloadTemplate from '../../utils/download-template'
 import install from '../../utils/install'
 import logger from '../../utils/logger'
@@ -22,17 +22,17 @@ export default (project: string): void => {
         name: 'ok'
       }
     ])
-      .then(({ ok }: obj): void => {
-        if (ok) run(name, to)
+      .then(({ ok }: Obj): void => {
+        if (ok) run(name, to).catch(console.error)
       })
       .catch(logger.fatal)
   }
 
-  needConfrim ? confirm() : run(name, to)
+  needConfrim ? confirm() : run(name, to).catch(console.error)
 }
 
 const run = async (project: string, to: string): Promise<void> => {
-  const { tpl }: initAnswer = await downloadTemplate()
+  const { tpl }: InitAnswer = await downloadTemplate()
 
   install({ name: project, src: tpl, dest: to }).catch(logger.fatal)
 }

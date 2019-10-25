@@ -8,15 +8,15 @@
   var path = require('path');
   var home = require('user-home');
   var pgk = require('../package.json');
-  var org_name = 'fa-web-template';
-  var pro_name = pgk.name;
-  var root_path = path.join(__dirname, '../');
-  var tpl_path = path.join(home, "." + org_name);
-  var user_path = process.cwd();
-  var user_tpl_json_path = process.cwd() + "/template.json";
-  var git_tpl_list_url = "https://api.github.com/orgs/" + org_name + "/repos";
-  var git_repo_default_branch = 'master';
-  var cli_tag_url = 'https://registry.npm.taobao.org/fa-cli';
+  var ORG_NAME = 'fa-web-template';
+  var PRO_NAME = pgk.name;
+  var ROOT_PATH = path.join(__dirname, '../');
+  var TPL_PATH = path.join(home, "." + ORG_NAME);
+  var USER_PATH = process.cwd();
+  var USER_TPL_JSON_PATH = process.cwd() + "/template.json";
+  var GIT_TPL_LIST_URL = "https://api.github.com/orgs/" + ORG_NAME + "/repos";
+  var GIT_REPO_DEFAULT_BRANCH = 'master';
+  var CLI_TAG_URL = 'https://registry.npm.taobao.org/fa-cli';
 
   var request = require('request');
   var semver = require('semver');
@@ -28,7 +28,7 @@
           return console.log(chalk.red("  You must upgrade node to >=" + packageConfig.engines.node + ".x to use vue-cli"));
       }
       request({
-          url: cli_tag_url,
+          url: CLI_TAG_URL,
           timeout: 1000
       }, function (err, res, body) {
           if (!err && res.statusCode === 200) {
@@ -36,7 +36,7 @@
               var version = data.latest;
               var localVersion = packageConfig.version;
               if (semver.lt(localVersion, version)) {
-                  console.log(chalk.yellow(" " + pro_name + " release new version!"));
+                  console.log(chalk.yellow(" " + PRO_NAME + " release new version!"));
                   console.log('  latest:    ' + chalk.green(version));
                   console.log('  installed: ' + chalk.red(localVersion));
               }
@@ -113,9 +113,9 @@
               }
               headers = {
                   headers: {
-                      'User-Agent': pro_name
+                      'User-Agent': PRO_NAME
                   },
-                  url: git_tpl_list_url
+                  url: GIT_TPL_LIST_URL
               };
               handler = function (data) {
                   var tpls = {};
@@ -215,7 +215,7 @@
               type: 'input',
               name: 'branch',
               message: 'use branch',
-              default: git_repo_default_branch
+              default: GIT_REPO_DEFAULT_BRANCH
           }
       ];
   };
@@ -232,7 +232,7 @@
               case 2:
                   _a = _b.sent(), name = _a.name, branch = _a.branch;
                   place = tpls[name]['owner/name'];
-                  tpl = path$1.join(tpl_path, name);
+                  tpl = path$1.join(TPL_PATH, name);
                   res = { name: name, tpl: tpl };
                   spinner = ora$1('download...');
                   spinner.start();
@@ -333,7 +333,7 @@
   var promptFn = function (data, key, promptData, done) {
       promptsFn(key, promptData, function (answers) {
           var answer = answers[key];
-          if (promptData.children && !!answer) {
+          if (promptData.children && answer) {
               data[key] = [];
               childrenAsk(data, key, promptData.children, done);
           }
@@ -509,11 +509,11 @@
               .then(function (_a) {
               var ok = _a.ok;
               if (ok)
-                  run(name, to);
+                  run(name, to).catch(console.error);
           })
               .catch(logger.fatal);
       };
-      needConfrim ? confirm() : run(name, to);
+      needConfrim ? confirm() : run(name, to).catch(console.error);
   });
   var run = function (project, to) { return __awaiter(void 0, void 0, void 0, function () {
       var tpl;
@@ -543,8 +543,8 @@
 
   var isEmpty = require('lodash').isEmpty;
   var page = (function () {
-      existOrExit(user_tpl_json_path, 'The template.json file could not be found, please make sure to run this command in the project root directory!');
-      var pages = require(user_tpl_json_path).pages;
+      existOrExit(USER_TPL_JSON_PATH, 'The template.json file could not be found, please make sure to run this command in the project root directory!');
+      var pages = require(USER_TPL_JSON_PATH).pages;
       logger.success('Page List：');
       if (isEmpty(pages)) {
           return console.log('list is empty');
@@ -635,31 +635,31 @@
   };
 
   var page$1 = (function () { return __awaiter(void 0, void 0, void 0, function () {
-      var ora, writeFile$$1, join, prompt, templte, template_name, generator_path, _a, getQuestions, getTemplates, questions, answers, files, spinner;
+      var ora, writeFile$$1, join, prompt, templte, templateName, generatorPath, _a, getQuestions, getTemplates, questions, answers, files, spinner;
       return __generator(this, function (_b) {
           switch (_b.label) {
               case 0:
-                  existOrExit(user_tpl_json_path, 'The template.json file could not be found, please make sure to run this command in the project root directory!');
+                  existOrExit(USER_TPL_JSON_PATH, 'The template.json file could not be found, please make sure to run this command in the project root directory!');
                   ora = require('ora');
                   writeFile$$1 = require('fs').writeFile;
                   join = require('path').join;
                   prompt = require('inquirer').prompt;
-                  templte = require(user_tpl_json_path);
-                  template_name = templte.name;
-                  generator_path = join(tpl_path, template_name + "/generator");
-                  _a = require(join(generator_path, 'command/add/page.js')), getQuestions = _a.getQuestions, getTemplates = _a.getTemplates;
-                  questions = getQuestions(user_path);
+                  templte = require(USER_TPL_JSON_PATH);
+                  templateName = templte.name;
+                  generatorPath = join(TPL_PATH, templateName + "/generator");
+                  _a = require(join(generatorPath, 'command/add/page.js')), getQuestions = _a.getQuestions, getTemplates = _a.getTemplates;
+                  questions = getQuestions(USER_PATH);
                   return [4 /*yield*/, prompt(questions)];
               case 1:
                   answers = _b.sent();
-                  files = getTemplates(answers, user_path);
+                  files = getTemplates(answers, USER_PATH);
                   spinner = ora('creating page...');
                   spinner.start();
                   return [4 /*yield*/, generate(files, answers)];
               case 2:
                   _b.sent();
                   templte.pages.push(answers);
-                  writeFile$$1(user_tpl_json_path, JSON.stringify(templte), function (err) {
+                  writeFile$$1(USER_TPL_JSON_PATH, JSON.stringify(templte), function (err) {
                       if (err)
                           logger.fatal('failed to create page：', err);
                       spinner.stop();
@@ -675,7 +675,7 @@
   };
   var add = (function (type) {
       if (actions$1[type]) {
-          page$1();
+          page$1().catch(console.error);
       }
       else {
           logger.fatal("type not found\uFF1A" + type);
@@ -683,23 +683,23 @@
   });
 
   var page$2 = (function () { return __awaiter(void 0, void 0, void 0, function () {
-      var fs, join, prompt, ora, template, template_name, generator_path, _a, questions, getTemplates, answers, files, spinner;
+      var fs, join, prompt, ora, template, templateName, generatorPath, _a, questions, getTemplates, answers, files, spinner;
       return __generator(this, function (_b) {
           switch (_b.label) {
               case 0:
-                  existOrExit(user_tpl_json_path, 'The template.json file could not be found, please make sure to run this command in the project root directory!');
+                  existOrExit(USER_TPL_JSON_PATH, 'The template.json file could not be found, please make sure to run this command in the project root directory!');
                   fs = require('fs');
                   join = require('path').join;
                   prompt = require('inquirer').prompt;
                   ora = require('ora');
-                  template = require(user_tpl_json_path);
-                  template_name = template.name;
-                  generator_path = join(tpl_path, template_name + "/generator");
-                  _a = require(join(generator_path, 'command/delete/page.js')), questions = _a.questions, getTemplates = _a.getTemplates;
+                  template = require(USER_TPL_JSON_PATH);
+                  templateName = template.name;
+                  generatorPath = join(TPL_PATH, templateName + "/generator");
+                  _a = require(join(generatorPath, 'command/delete/page.js')), questions = _a.questions, getTemplates = _a.getTemplates;
                   return [4 /*yield*/, prompt(questions)];
               case 1:
                   answers = _b.sent();
-                  files = getTemplates(answers, user_path);
+                  files = getTemplates(answers, USER_PATH);
                   spinner = ora('deleting Page ...');
                   spinner.start();
                   return [4 /*yield*/, deleteFiles(files)];
@@ -711,7 +711,7 @@
                       }
                       return null;
                   });
-                  fs.writeFile(user_tpl_json_path, JSON.stringify(template), function (err) {
+                  fs.writeFile(USER_TPL_JSON_PATH, JSON.stringify(template), function (err) {
                       if (err)
                           logger.fatal('delete fail', err);
                       spinner.stop();
@@ -727,7 +727,7 @@
   };
   var remove = (function (type) {
       if (actions$2[type]) {
-          page$2();
+          page$2().catch(console.error);
       }
       else {
           logger.fatal("type not found\uFF1A" + type);
@@ -758,7 +758,7 @@
           .description('Download project template')
           .alias('load')
           .action(function () {
-          command.download();
+          command.download().catch(console.error);
       });
       program
           .command('add [type]')
