@@ -3,9 +3,13 @@
     "fa": "./dist/index.umd.js"
   },
   "name": "fa-cli",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "description": "A simple CLI for creating your front-end project",
-  "keywords": [],
+  "keywords": [
+    "fa-cli",
+    "cli",
+    "front end cli"
+  ],
   "main": "dist/index.umd.js",
   "module": "dist/index.es5.js",
   "typings": "dist/types/fa-cli.d.ts",
@@ -15,8 +19,9 @@
   "author": "gd4ark <gd4ark@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/gd4Ark/fa-cli.git"
   },
+  "homepage": "https://github.com/gd4ark/fa-cli",
   "license": "MIT",
   "engines": {
     "node": ">=6.0.0"

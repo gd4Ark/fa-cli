@@ -10,3 +10,4 @@ compiled
 .rpt2_cache
 docs
 .history
+package-lock.json

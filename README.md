@@ -1,5 +1,6 @@
 # FA-CLI
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dfc794fdc34849c4b1cd05a93d8df407)](https://www.codacy.com/manual/gd4Ark/fa-cli?utm_source=github.com&utm_medium=referral&utm_content=gd4Ark/fa-cli&utm_campaign=Badge_Grade)
 [![npm](https://img.shields.io/npm/v/fa-cli)](https://www.npmjs.com/package/fa-cli)
 [![npm](https://img.shields.io/npm/dm/fa-cli)](https://www.npmjs.com/package/fa-cli)
 [![NPM](https://img.shields.io/npm/l/fa-cli)](https://github.com/gd4Ark/fa-cli/blob/master/LICENSE)
